@@ -2,334 +2,274 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Hasil Sumatif SMP Negeri 1 Sukasada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hasil Sumatif</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4e54c8',
+            secondary: '#8f94fb',
+            accent: '#4facfe',
+            light: '#00f2fe',
+          }
+        }
+      }
+    }
+  </script>
   <style>
     @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
     }
     
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes gradientBG {
+    @keyframes gradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
     
-    .floating {
-      animation: float 4s ease-in-out infinite;
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
     
-    .btn-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: scale(1);
-    }
-    
-    .btn-hover:hover {
-      transform: scale(1.02) translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    @keyframes cardEnter {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     
     .gradient-bg {
-      background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+      background: linear-gradient(-45deg, #4e54c8, #8f94fb, #4facfe, #00f2fe);
       background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      min-height: 100vh;
+      animation: gradient 15s ease infinite;
     }
     
-    body {
-      font-family: 'Poppins', sans-serif;
-      overflow-x: hidden;
+    .logo-float {
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
     }
     
-    .fade-in {
-      animation: fadeIn 0.6s ease-out forwards;
-      opacity: 0;
+    .button-glow:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
     }
     
-    .glass-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    }
-    
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-      z-index: 1;
-    }
-    
-    .wave svg {
-      position: relative;
-      display: block;
-      width: calc(100% + 1.3px);
-      height: 150px;
-    }
-    
-    .wave .shape-fill {
-      fill: rgba(255,255,255,0.1);
-    }
-    
-    /* Modern card hover effect */
-    .card-hover {
-      position: relative;
-      overflow: hidden;
+    .button-scale {
       transition: all 0.3s ease;
-    }
-    
-    .card-hover::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.15) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    
-    .card-hover:hover::before {
-      opacity: 1;
-    }
-    
-    @media (max-width: 640px) {
-      .wave svg {
-        height: 80px;
-      }
-      
-      .gradient-bg {
-        animation: gradientBG 20s ease infinite;
-      }
-    }
-    
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(255,255,255,0.1);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.3);
-      border-radius: 10px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(255,255,255,0.5);
-    }
-    
-    .content-container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
       position: relative;
-      z-index: 10;
+      overflow: hidden;
     }
     
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem 0;
+    .button-scale:hover {
+      transform: scale(1.05);
     }
     
-    /* Floating particles */
-    .particle {
+    .ripple {
       position: absolute;
       border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
       pointer-events: none;
-      z-index: 1;
     }
     
-    /* Elegant title */
-    .portal-title {
-      position: relative;
-      display: inline-block;
+    @keyframes ripple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
     }
     
-    .portal-title::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform 0.4s ease;
+    .card {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
-    .portal-title:hover::after {
-      transform: scaleX(1);
+    .class-card {
+      transition: all 0.3s ease;
+      animation: cardEnter 0.5s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .class-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .class-card:nth-child(1) { animation-delay: 0.2s; }
+    .class-card:nth-child(2) { animation-delay: 0.4s; }
+    .class-card:nth-child(3) { animation-delay: 0.6s; }
+    
+    /* Mobile specific styles */
+    @media (max-width: 640px) {
+      .mobile-flex-col {
+        flex-direction: column;
+      }
+      .mobile-text-center {
+        text-align: center;
+      }
+      .mobile-p-4 {
+        padding: 1rem;
+      }
+      .mobile-mt-2 {
+        margin-top: 0.5rem;
+      }
+      .mobile-w-full {
+        width: 100%;
+      }
+      .class-card {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
     }
   </style>
 </head>
-<body class="gradient-bg">
-  <!-- Floating particles background -->
-  <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
-
-  <div class="main-content">
-    <div class="content-container">
-      <!-- Main content -->
-      <div class="relative z-10 w-full max-w-4xl px-4">
-        <div class="mb-8 md:mb-12 flex justify-center fade-in">
-          <div class="relative">
-            <img src="https://i.ibb.co.com/3YjdDh2N/logo-sekolah-FINAL.png" alt="Logo Sekolah" 
-                 class="h-20 w-20 md:h-28 md:w-28 object-contain transition-transform duration-300 hover:scale-105">
-          </div>
+<body class="gradient-bg min-h-screen flex flex-col items-center justify-center p-4 text-white font-sans overflow-x-hidden">
+  <div class="flex flex-col items-center justify-center space-y-6 md:space-y-8 max-w-4xl w-full mobile-p-4">
+    <!-- Animated Logo with pulse effect -->
+    <div class="logo-float animate__animated animate__fadeIn">
+      <img src="https://i.ibb.co.com/3YjdDh2N/logo-sekolah-FINAL.png" alt="Logo Sekolah" 
+           class="h-24 w-24 md:h-32 md:w-32 object-contain transition-all duration-500 hover:rotate-6 hover:scale-110">
+    </div>
+    
+    <!-- Title with animation -->
+    <div class="card rounded-2xl p-6 md:p-8 w-full max-w-2xl animate__animated animate__fadeInDown">
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-white drop-shadow-lg">
+        <span class="inline-block animate__animated animate__pulse animate__infinite animate__slower">📊</span> 
+        Hasil Sumatif SMP Negeri 1 Sukasada
+        <span class="inline-block animate__animated animate__pulse animate__infinite animate__slower">📊</span>
+      </h1>
+      
+      <!-- Description with animated icon -->
+      <p class="text-base md:text-lg text-center opacity-90 mt-4 flex items-center justify-center">
+        <i class="fas fa-arrow-down text-xl mr-2 animate-bounce"></i>
+        Silakan pilih kelas untuk melihat hasil sumatif
+        <i class="fas fa-arrow-down text-xl ml-2 animate-bounce"></i>
+      </p>
+    </div>
+    
+    <!-- Enhanced Class Cards Container -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full max-w-4xl">
+      <!-- Class 7 Card -->
+      <div class="class-card card rounded-xl p-6 flex flex-col items-center cursor-pointer hover:bg-white/20 transition-all"
+           onclick="location.href='https://pujana2207.github.io/REKAP-SUMATIF-7/'">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 flex items-center justify-center mb-4">
+          <i class="fas fa-user-graduate text-3xl text-white"></i>
         </div>
-
-        <div class="glass-card rounded-2xl p-6 md:p-8 mb-8 md:mb-12 fade-in">
-          <h1 class="text-2xl md:text-4xl font-bold text-white text-center mb-4">
-            <span class="portal-title bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-              Portal Hasil Sumatif
-            </span>
-          </h1>
-          <h2 class="text-xl md:text-2xl font-medium text-white/90 text-center mb-3">SMP Negeri 1 Sukasada</h2>
-          <div class="w-16 h-1 bg-gradient-to-r from-white/30 to-white rounded-full mx-auto mb-4"></div>
-          <p class="text-white/80 text-sm md:text-base text-center max-w-md mx-auto">
-            Pilih kelas untuk melihat hasil sumatif siswa secara transparan
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-          <button 
-            onclick="location.href='https://pujana2207.github.io/REKAP-SUMATIF-7/'" 
-            class="btn-hover glass-card text-white py-5 px-6 rounded-xl shadow-lg font-medium text-base md:text-lg flex flex-col items-center transition-all duration-300 hover:bg-white/10 delay-1 fade-in card-hover"
-          >
-            <div class="relative mb-3">
-              <div class="relative bg-blue-500/20 p-3 rounded-full">
-                <i class="fas fa-book-open text-2xl md:text-3xl"></i>
-              </div>
-            </div>
-            <span>Kelas 7</span>
-            <span class="text-xs text-white/60 mt-1">Lihat hasil</span>
-          </button>
-          
-          <button 
-            onclick="location.href='https://pujana2207.github.io/REKAP-SUMATIF-8/'" 
-            class="btn-hover glass-card text-white py-5 px-6 rounded-xl shadow-lg font-medium text-base md:text-lg flex flex-col items-center transition-all duration-300 hover:bg-white/10 delay-2 fade-in card-hover"
-          >
-            <div class="relative mb-3">
-              <div class="relative bg-purple-500/20 p-3 rounded-full">
-                <i class="fas fa-book text-2xl md:text-3xl"></i>
-              </div>
-            </div>
-            <span>Kelas 8</span>
-            <span class="text-xs text-white/60 mt-1">Lihat hasil</span>
-          </button>
-          
-          <button 
-            onclick="location.href='https://pujana2207.github.io/PORTAL-UJIAN/'" 
-            class="btn-hover glass-card text-white py-5 px-6 rounded-xl shadow-lg font-medium text-base md:text-lg flex flex-col items-center transition-all duration-300 hover:bg-white/10 delay-3 fade-in card-hover"
-          >
-            <div class="relative mb-3">
-              <div class="relative bg-pink-500/20 p-3 rounded-full">
-                <i class="fas fa-graduation-cap text-2xl md:text-3xl"></i>
-              </div>
-            </div>
-            <span>Kelas 9</span>
-            <span class="text-xs text-white/60 mt-1">Lihat hasil</span>
-          </button>
-        </div>
+        <h3 class="text-xl md:text-2xl font-bold mb-2">Kelas 7</h3>
+        <p class="text-sm md:text-base opacity-80 text-center mb-4">Lihat hasil sumatif untuk siswa kelas 7</p>
+        <button class="button-glow button-scale bg-white/90 text-indigo-600 font-semibold py-2 px-6 rounded-lg shadow hover:bg-white transition-all duration-300 text-sm md:text-base">
+          Buka Hasil
+        </button>
       </div>
+      
+      <!-- Class 8 Card -->
+      <div class="class-card card rounded-xl p-6 flex flex-col items-center cursor-pointer hover:bg-white/20 transition-all"
+           onclick="location.href='https://pujana2207.github.io/REKAP-SUMATIF-8/'">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 flex items-center justify-center mb-4">
+          <i class="fas fa-users text-3xl text-white"></i>
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold mb-2">Kelas 8</h3>
+        <p class="text-sm md:text-base opacity-80 text-center mb-4">Lihat hasil sumatif untuk siswa kelas 8</p>
+        <button class="button-glow button-scale bg-white/90 text-indigo-600 font-semibold py-2 px-6 rounded-lg shadow hover:bg-white transition-all duration-300 text-sm md:text-base">
+          Buka Hasil
+        </button>
+      </div>
+      
+      <!-- Class 9 Card -->
+      <div class="class-card card rounded-xl p-6 flex flex-col items-center cursor-pointer hover:bg-white/20 transition-all"
+           onclick="location.href='https://pujana2207.github.io/PORTAL-UJIAN/'">
+        <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/20 flex items-center justify-center mb-4">
+          <i class="fas fa-graduation-cap text-3xl text-white"></i>
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold mb-2">Kelas 9</h3>
+        <p class="text-sm md:text-base opacity-80 text-center mb-4">Lihat hasil sumatif untuk siswa kelas 9</p>
+        <button class="button-glow button-scale bg-white/90 text-indigo-600 font-semibold py-2 px-6 rounded-lg shadow hover:bg-white transition-all duration-300 text-sm md:text-base">
+          Buka Hasil
+        </button>
+      </div>
+    </div>
+    
+    <!-- Floating action button for mobile -->
+    <div class="md:hidden fixed bottom-6 right-6">
+      <button class="w-14 h-14 rounded-full bg-white/90 text-indigo-600 shadow-xl flex items-center justify-center button-glow animate__animated animate__pulse animate__infinite animate__slower">
+        <i class="fas fa-question text-xl"></i>
+      </button>
+    </div>
+    
+    <!-- Footer with subtle animation -->
+    <div class="mt-8 md:mt-12 text-xs md:text-sm opacity-70 animate__animated animate__fadeIn animate__delay-2s mobile-text-center">
+      <p class="flex items-center justify-center">
+        <i class="fas fa-copyright mr-2"></i> 2023 Sekolah Kami
+      </p>
+      <p class="mobile-mt-2 flex items-center justify-center">
+        <i class="fas fa-shield-alt mr-2"></i> All rights reserved
+      </p>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="relative z-10 py-8 text-white/50 text-xs md:text-sm fade-in animate__animated animate__fadeIn animate__delay-1s text-center">
-    © 2025 SMP Negeri 1 Sukasada • Dibuat oleh Gede Pujana
-  </div>
-
-  <!-- Wave decoration -->
-  <div class="wave">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
-    </svg>
-  </div>
-
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Create floating particles
-      const particlesContainer = document.getElementById('particles-container');
-      const particleCount = 15;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
+    // Enhanced ripple effect for buttons
+    document.querySelectorAll('.button-scale').forEach(button => {
+      button.addEventListener('click', function(e) {
+        // Remove existing ripples
+        const ripples = this.querySelectorAll('.ripple');
+        ripples.forEach(ripple => ripple.remove());
         
-        // Random size between 2px and 5px
-        const size = Math.random() * 3 + 2;
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
+        // Create new ripple
+        const rect = this.getBoundingClientRect();
+        let x = e.clientX - rect.left;
+        let y = e.clientY - rect.top;
         
-        // Random position
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.left = `${Math.random() * 100}%`;
+        let ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        this.appendChild(ripple);
         
-        // Random opacity
-        const opacity = Math.random() * 0.3 + 0.1;
-        particle.style.opacity = opacity;
+        // Add click sound effect
+        const clickSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
+        clickSound.volume = 0.3;
+        clickSound.play().catch(e => console.log("Audio play failed:", e));
         
-        // Random color (white with slight tint)
-        const hue = Math.random() * 60 + 180; // blue-ish hue
-        particle.style.backgroundColor = `hsla(${hue}, 80%, 80%, ${opacity})`;
-        
-        // Random animation
-        const duration = Math.random() * 15 + 10;
-        const delay = Math.random() * 5;
-        particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-        
-        particlesContainer.appendChild(particle);
-      }
-
-      // Enhanced card hover effects with mouse tracking
-      const cards = document.querySelectorAll('.card-hover');
-      cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
-        });
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
       });
-
-      // Add subtle hover effect to logo
-      const logo = document.querySelector('img[alt="Logo Sekolah"]');
-      if (logo) {
-        logo.addEventListener('mouseenter', () => {
-          logo.classList.add('floating');
-        });
-        
-        logo.addEventListener('mouseleave', () => {
-          logo.classList.remove('floating');
-        });
-      }
+    });
+    
+    // Add hover sound effect
+    document.querySelectorAll('.class-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        const hoverSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-hover-click-notification-358.mp3');
+        hoverSound.volume = 0.2;
+        hoverSound.play().catch(e => console.log("Audio play failed:", e));
+      });
+    });
+    
+    // Add animation to logo on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const logo = document.querySelector('.logo-float');
+      setTimeout(() => {
+        logo.classList.add('animate__animated', 'animate__pulse');
+      }, 1000);
+    });
+    
+    // Add touch feedback for mobile
+    document.querySelectorAll('.class-card').forEach(card => {
+      card.addEventListener('touchstart', function() {
+        this.classList.add('scale-95');
+      });
+      card.addEventListener('touchend', function() {
+        this.classList.remove('scale-95');
+      });
     });
   </script>
 </body>
