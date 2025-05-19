@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Hasil Sumatif SMP Negeri 1 Sukasada</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.9; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .pulse {
+      animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    .btn-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(1);
+      will-change: transform;
+    }
+    
+    .btn-hover:hover {
+      transform: scale(1.03) translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .btn-hover:active {
+      transform: scale(0.98);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      min-height: 100vh;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .logo-animate {
+      animation: fadeIn 0.8s ease-out 0.2s both, pulse 3s ease-in-out 1.5s infinite;
+    }
+    
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 1;
+    }
+    
+    .wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 150px;
+    }
+    
+    .wave .shape-fill {
+      fill: rgba(255,255,255,0.1);
+    }
+    
+    @media (max-width: 640px) {
+      .wave svg {
+        height: 80px;
+      }
+      
+      .gradient-bg {
+        animation: gradientBG 20s ease infinite;
+      }
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.5);
+    }
+    
+    .content-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      position: relative;
+      z-index: 10;
+    }
+    
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem 0;
+    }
+  </style>
+</head>
+<body class="gradient-bg">
+  <!-- Floating particles background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-white/20 animate-float" style="animation-delay: 0s; animation-duration: 15s;"></div>
+    <div class="absolute top-1/3 right-1/5 w-4 h-4 rounded-full bg-white/30 animate-float" style="animation-delay: 2s; animation-duration: 12s;"></div>
+    <div class="absolute bottom-1/4 left-1/5 w-2 h-2 rounded-full bg-white/25 animate-float" style="animation-delay: 4s; animation-duration: 18s;"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-3 h-3 rounded-full bg-white/15 animate-float" style="animation-delay: 1s; animation-duration: 14s;"></div>
+  </div>
+
+  <div class="main-content">
+    <div class="content-container">
+      <!-- Main content -->
+      <div class="relative z-10 w-full max-w-4xl px-4">
+        <div class="logo-animate mb-6 md:mb-10 flex justify-center">
+          <div class="relative">
+            <img src="https://i.ibb.co.com/3YjdDh2N/logo-sekolah-FINAL.png" alt="Logo Sekolah" class="h-20 w-20 md:h-28 md:w-28 object-contain">
+            <div class="absolute inset-0 rounded-full border-4 border-white/20 animate-ping opacity-0"></div>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 md:p-8 mb-8 md:mb-12 fade-in">
+          <h1 class="text-2xl md:text-4xl font-bold text-white text-center mb-4 text-shadow">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
+              Portal Hasil Sumatif
+            </span>
+          </h1>
+          <h2 class="text-xl md:text-2xl font-semibold text-white/90 text-center mb-3">SMP Negeri 1 Sukasada</h2>
+          <div class="w-16 h-1 bg-gradient-to-r from-white/30 to-white rounded-full mx-auto mb-4"></div>
+          <p class="text-white/80 text-sm md:text-base text-center max-w-md mx-auto">
+            Pilih kelas untuk melihat hasil sumatif siswa secara transparan
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+          <button 
+            onclick="location.href='https://pujana2207.github.io/REKAP-SUMATIF-7/'" 
+            class="btn-hover glass-card text-white py-5 px-6 rounded-xl shadow-xl font-semibold text-base md:text-lg flex flex-col items-center transition-all duration-300 hover:bg-white/20 delay-1 fade-in"
+          >
+            <div class="relative mb-3">
+              <div class="absolute inset-0 bg-blue-400/20 rounded-full animate-ping opacity-75"></div>
+              <div class="relative bg-blue-500/20 p-3 rounded-full">
+                <i class="fas fa-book-open text-2xl md:text-3xl"></i>
+              </div>
+            </div>
+            <span>Kelas 7</span>
+            <span class="text-xs text-white/60 mt-1">Lihat hasil</span>
+          </button>
+          
+          <button 
+            onclick="location.href='https://pujana2207.github.io/REKAP-SUMATIF-8/'" 
+            class="btn-hover glass-card text-white py-5 px-6 rounded-xl shadow-xl font-semibold text-base md:text-lg flex flex-col items-center transition-all duration-300 hover:bg-white/20 delay-2 fade-in"
+          >
+            <div class="relative mb-3">
+              <div class="absolute inset-0 bg-purple-400/20 rounded-full animate-ping opacity-75"></div>
+              <div class="relative bg-purple-500/20 p-3 rounded-full">
+                <i class="fas fa-book text-2xl md:text-3xl"></i>
+              </div>
+            </div>
+            <span>Kelas 8</span>
+            <span class="text-xs text-white/60 mt-1">Lihat hasil</span>
+          </button>
+          
+          <button 
+            onclick="location.href='https://pujana2207.github.io/PORTAL-UJIAN/'" 
+            class="btn-hover glass-card text-white py-5 px-6 rounded-xl shadow-xl font-semibold text-base md:text-lg flex flex-col items-center transition-all duration-300 hover:bg-white/20 delay-3 fade-in"
+          >
+            <div class="relative mb-3">
+              <div class="absolute inset-0 bg-pink-400/20 rounded-full animate-ping opacity-75"></div>
+              <div class="relative bg-pink-500/20 p-3 rounded-full">
+                <i class="fas fa-graduation-cap text-2xl md:text-3xl"></i>
+              </div>
+            </div>
+            <span>Kelas 9</span>
+            <span class="text-xs text-white/60 mt-1">Lihat hasil</span>
+          </button>
+        </div>
+
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="relative z-10 py-8 text-white/50 text-xs md:text-sm fade-in animate__animated animate__fadeIn animate__delay-1s text-center">
+    © 2025 SMP Negeri 1 Sukasada • Dibuat oleh Gede Pujana
+  </div>
+
+  <!-- Wave decoration -->
+  <div class="wave">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+    </svg>
+  </div>
+
+  <script>
+    // Enhanced animations and interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      // Add floating particles
+      const container = document.querySelector('.absolute.inset-0');
+      for (let i = 0; i < 8; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'absolute rounded-full bg-white/10';
+        particle.style.width = `${Math.random() * 5 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animation = `float ${Math.random() * 10 + 10}s ease-in-out infinite`;
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(particle);
+      }
+
+      // Enhanced button hover effects
+      const buttons = document.querySelectorAll('.btn-hover');
+      buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+          const rect = button.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width * 100;
+          const y = (e.clientY - rect.top) / rect.height * 100;
+          button.style.setProperty('--mouse-x', x);
+          button.style.setProperty('--mouse-y', y);
+        });
+
+        button.addEventListener('click', (e) => {
+          // Ripple effect
+          const ripple = document.createElement('span');
+          ripple.className = 'ripple-effect';
+          
+          const rect = button.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size/2;
+          const y = e.clientY - rect.top - size/2;
+          
+          ripple.style.width = ripple.style.height = `${size}px`;
+          ripple.style.left = `${x}px`;
+          ripple.style.top = `${y}px`;
+          
+          button.appendChild(ripple);
+          
+          setTimeout(() => {
+            ripple.remove();
+          }, 1000);
+        });
+      });
+
+      // Add CSS for ripple effect
+      const style = document.createElement('style');
+      style.textContent = `
+        .ripple-effect {
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.3);
+          transform: scale(0);
+          animation: ripple 0.6s linear;
+          pointer-events: none;
+        }
+        
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+        
+        .btn-hover {
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .btn-hover::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle at calc(var(--mouse-x, 0) * 1%) calc(var(--mouse-y, 0) * 1%), rgba(255,255,255,0.1) 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        
+        .btn-hover:hover::before {
+          opacity: 1;
+        }
+      `;
+      document.head.appendChild(style);
+    });
+  </script>
+</body>
+</html>
